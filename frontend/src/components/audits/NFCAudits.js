@@ -78,16 +78,16 @@ const NFCAudits = () => {
     const vehicle = vehicles.find(v => v.vin === '1HGBH41JXMN109186'); // Mock relationship
     
     return (
-      <Card className="bg-gray-900 border-gray-800 hover:bg-gray-850 transition-all duration-200">
-        <CardContent className="p-6">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="font-semibold text-white">
+      <Card className="bg-gray-900 border-gray-800 hover:bg-gray-850 transition-all duration-200 overflow-hidden">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex items-start justify-between mb-4 gap-2">
+            <div className="min-w-0 flex-1">
+              <h3 className="font-semibold text-white text-sm sm:text-base truncate">
                 {vehicle ? `${vehicle.year} ${vehicle.make} ${vehicle.model}` : 'Vehicle Audit'}
               </h3>
-              <p className="text-sm text-gray-400">VIN: 1HGBH41JXMN109186</p>
+              <p className="text-xs sm:text-sm text-gray-400 truncate">VIN: 1HGBH41JXMN109186</p>
             </div>
-            <Badge className={`${
+            <Badge className={`flex-shrink-0 text-xs ${
               audit.severity === 'warning' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
               audit.severity === 'error' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
               'bg-green-500/20 text-green-400 border-green-500/30'
