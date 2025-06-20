@@ -113,12 +113,12 @@ const NFCAudits = () => {
             <p className="text-sm text-gray-300">{audit.message}</p>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-4 w-4 text-green-400" />
               <span className="text-sm text-green-400">NFC Tag Scanned</span>
             </div>
-            <Button size="sm" variant="outline" className="bg-transparent border-gray-700 text-white hover:bg-gray-800">
+            <Button size="sm" variant="outline" className="bg-transparent border-gray-700 text-white hover:bg-gray-800 w-full sm:w-auto">
               View Details
             </Button>
           </div>
