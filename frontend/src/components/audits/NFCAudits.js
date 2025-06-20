@@ -96,14 +96,14 @@ const NFCAudits = () => {
             </Badge>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4 text-gray-400" />
               <span className="text-sm text-white">{formatDateTime(audit.timestamp)}</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="h-4 w-4 text-gray-400" />
-              <span className="text-sm text-white">
+              <span className="text-sm text-white truncate">
                 34.0522, -118.2437
               </span>
             </div>
