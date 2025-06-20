@@ -58,16 +58,16 @@ const VehicleInventory = () => {
   });
 
   const VehicleCard = ({ vehicle }) => (
-    <Card className="bg-gray-900 border-gray-800 hover:bg-gray-850 transition-all duration-200">
-      <CardContent className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h3 className="font-semibold text-lg text-white">
+    <Card className="bg-gray-900 border-gray-800 hover:bg-gray-850 transition-all duration-200 overflow-hidden">
+      <CardContent className="p-4 sm:p-6">
+        <div className="flex items-start justify-between mb-4 gap-2">
+          <div className="min-w-0 flex-1">
+            <h3 className="font-semibold text-base sm:text-lg text-white truncate">
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h3>
-            <p className="text-sm text-gray-400">VIN: {vehicle.vin}</p>
+            <p className="text-sm text-gray-400 truncate">VIN: {vehicle.vin}</p>
           </div>
-          <Badge className={`${
+          <Badge className={`flex-shrink-0 text-xs ${
             vehicle.status === 'on_lot' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
             vehicle.status === 'sold' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
             'bg-gray-500/20 text-gray-400 border-gray-500/30'
