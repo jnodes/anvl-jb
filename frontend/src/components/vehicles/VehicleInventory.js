@@ -76,7 +76,7 @@ const VehicleInventory = () => {
           </Badge>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div className="flex items-center space-x-2">
             <DollarSign className="h-4 w-4 text-gray-400" />
             <span className="text-sm text-white">{formatCurrency(vehicle.price)}</span>
@@ -99,17 +99,17 @@ const VehicleInventory = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center space-x-2">
             <Smartphone className="h-4 w-4 text-blue-400" />
             <span className="text-sm text-blue-400">NFC Tagged</span>
           </div>
-          <div className="flex space-x-2">
-            <Button size="sm" variant="outline" className="bg-transparent border-gray-700 text-white hover:bg-gray-800">
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Button size="sm" variant="outline" className="bg-transparent border-gray-700 text-white hover:bg-gray-800 w-full sm:w-auto">
               <Eye className="h-4 w-4 mr-1" />
               View
             </Button>
-            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full sm:w-auto">
               <Smartphone className="h-4 w-4 mr-1" />
               Audit
             </Button>
