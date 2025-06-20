@@ -33,46 +33,74 @@ api.interceptors.response.use(
 // Dealer API
 export const dealerAPI = {
   connectWallet: async (dealerData) => {
+    if (USE_MOCK_DATA) {
+      // Return mock dealer data
+      return { data: mockDealer };
+    }
     const response = await api.post('/dealers/connect-wallet', dealerData);
     return response.data;
   },
 
   getDealer: async (dealerId) => {
+    if (USE_MOCK_DATA) {
+      return { data: mockDealer };
+    }
     const response = await api.get(`/dealers/${dealerId}`);
     return response.data;
   },
 
   getDealerByWallet: async (walletAddress) => {
+    if (USE_MOCK_DATA) {
+      return { data: mockDealer };
+    }
     const response = await api.get(`/dealers/wallet/${walletAddress}`);
     return response.data;
   },
 
   updateDealer: async (dealerId, updateData) => {
+    if (USE_MOCK_DATA) {
+      return { data: { ...mockDealer, ...updateData } };
+    }
     const response = await api.put(`/dealers/${dealerId}`, updateData);
     return response.data;
   },
 
   getDealerLoans: async (dealerId) => {
+    if (USE_MOCK_DATA) {
+      return { data: mockLoans };
+    }
     const response = await api.get(`/dealers/${dealerId}/loans`);
     return response.data;
   },
 
   getDealerVehicles: async (dealerId) => {
+    if (USE_MOCK_DATA) {
+      return { data: mockVehicles };
+    }
     const response = await api.get(`/dealers/${dealerId}/vehicles`);
     return response.data;
   },
 
   getDealerTransactions: async (dealerId) => {
+    if (USE_MOCK_DATA) {
+      return { data: mockTransactions };
+    }
     const response = await api.get(`/dealers/${dealerId}/transactions`);
     return response.data;
   },
 
   getDealerNotifications: async (dealerId) => {
+    if (USE_MOCK_DATA) {
+      return { data: mockNotifications };
+    }
     const response = await api.get(`/dealers/${dealerId}/notifications`);
     return response.data;
   },
 
   markNotificationRead: async (dealerId, notificationId) => {
+    if (USE_MOCK_DATA) {
+      return { data: { success: true } };
+    }
     const response = await api.post(`/dealers/${dealerId}/notifications/${notificationId}/mark-read`);
     return response.data;
   },
