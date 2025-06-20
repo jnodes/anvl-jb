@@ -177,13 +177,13 @@ const NFCAudits = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col items-center space-y-4">
-            <div className={`w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300 ${
+          <div className="flex flex-col items-center space-y-4 p-4">
+            <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-all duration-300 ${
               isScanning 
                 ? 'bg-blue-500/30 animate-pulse' 
                 : 'bg-gray-800 hover:bg-blue-500/20'
             }`}>
-              <Smartphone className={`h-12 w-12 ${
+              <Smartphone className={`h-10 w-10 md:h-12 md:w-12 ${
                 isScanning ? 'text-blue-400' : 'text-gray-400'
               }`} />
             </div>
@@ -194,12 +194,12 @@ const NFCAudits = () => {
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   <span className="font-medium text-green-400">Scan Successful</span>
                 </div>
-                <div className="text-sm text-gray-300">
+                <div className="text-sm text-gray-300 break-all">
                   VIN: {scanResult.vin} • Status: {scanResult.status}
                 </div>
               </div>
             ) : (
-              <p className="text-center text-gray-300">
+              <p className="text-center text-gray-300 px-4">
                 {isScanning 
                   ? 'Hold your device near the NFC tag...' 
                   : 'Click "Scan NFC Tag" to start scanning'
