@@ -76,24 +76,24 @@ const VehicleInventory = () => {
           </Badge>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-          <div className="flex items-center space-x-2">
-            <DollarSign className="h-4 w-4 text-gray-400" />
-            <span className="text-sm text-white">{formatCurrency(vehicle.price)}</span>
+        <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4 mb-4">
+          <div className="flex items-center space-x-2 min-w-0">
+            <DollarSign className="h-4 w-4 text-gray-400 flex-shrink-0" />
+            <span className="text-xs sm:text-sm text-white truncate">{formatCurrency(vehicle.price)}</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <Car className="h-4 w-4 text-gray-400" />
-            <span className="text-sm text-white">{vehicle.mileage.toLocaleString()} mi</span>
+          <div className="flex items-center space-x-2 min-w-0">
+            <Car className="h-4 w-4 text-gray-400 flex-shrink-0" />
+            <span className="text-xs sm:text-sm text-white truncate">{vehicle.mileage.toLocaleString()} mi</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <Calendar className="h-4 w-4 text-gray-400" />
-            <span className="text-sm text-white">
+          <div className="flex items-center space-x-2 min-w-0">
+            <Calendar className="h-4 w-4 text-gray-400 flex-shrink-0" />
+            <span className="text-xs sm:text-sm text-white truncate">
               {vehicle.last_audit ? formatDate(vehicle.last_audit) : 'No audit'}
             </span>
           </div>
-          <div className="flex items-center space-x-2">
-            <MapPin className="h-4 w-4 text-gray-400" />
-            <span className="text-sm text-white">
+          <div className="flex items-center space-x-2 min-w-0">
+            <MapPin className="h-4 w-4 text-gray-400 flex-shrink-0" />
+            <span className="text-xs sm:text-sm text-white truncate">
               {vehicle.status === 'on_lot' ? 'On Lot' : 'Sold'}
             </span>
           </div>
