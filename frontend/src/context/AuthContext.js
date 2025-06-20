@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { dealerAPI } from '../services/api';
+import { mockDealer } from '../mock/mockData';
 
 const AuthContext = createContext();
 
@@ -24,13 +25,21 @@ export const AuthProvider = ({ children }) => {
       const response = await dealerAPI.getDealerByWallet('0x742d35Cc6635C0532925a3b8D40120f4');
       console.log('Auto-connection API response:', response);
       
-      setDealer(response.data);
+      // Normalize the dealer data to match expected property names
+      const normalizedDealer = {
+        ...response.data,
+        wallet_address: response.data.walletAddress,
+        anvl_tokens: response.data.anvilTokens,
+        active_loans: response.data.activeLoans
+      };
+      
+      setDealer(normalizedDealer);
       setWalletAddress('0x742d35Cc6635C0532925a3b8D40120f4');
       setIsConnected(true);
       
       localStorage.setItem('anvl_wallet_connected', 'true');
       localStorage.setItem('anvl_wallet_address', '0x742d35Cc6635C0532925a3b8D40120f4');
-      localStorage.setItem('anvl_dealer_data', JSON.stringify(response.data));
+      localStorage.setItem('anvl_dealer_data', JSON.stringify(normalizedDealer));
       
       console.log('Auto-connection successful, state updated');
       return true;
@@ -54,14 +63,23 @@ export const AuthProvider = ({ children }) => {
       try {
         // Check if dealer exists by wallet address
         const response = await dealerAPI.getDealerByWallet(mockWalletAddress);
-        setDealer(response.data);
+        
+        // Normalize the dealer data to match expected property names
+        const normalizedDealer = {
+          ...response.data,
+          wallet_address: response.data.walletAddress,
+          anvl_tokens: response.data.anvilTokens,
+          active_loans: response.data.activeLoans
+        };
+        
+        setDealer(normalizedDealer);
         setWalletAddress(mockWalletAddress);
         setIsConnected(true);
         
         // Store in localStorage for persistence
         localStorage.setItem('anvl_wallet_connected', 'true');
         localStorage.setItem('anvl_wallet_address', mockWalletAddress);
-        localStorage.setItem('anvl_dealer_data', JSON.stringify(response.data));
+        localStorage.setItem('anvl_dealer_data', JSON.stringify(normalizedDealer));
         
         return { success: true, address: mockWalletAddress };
       } catch (error) {
@@ -76,14 +94,21 @@ export const AuthProvider = ({ children }) => {
           };
           
           const response = await dealerAPI.connectWallet(newDealerData);
-          setDealer(response.data);
+          const normalizedDealer = {
+            ...response.data,
+            wallet_address: response.data.walletAddress,
+            anvl_tokens: response.data.anvilTokens,
+            active_loans: response.data.activeLoans
+          };
+          
+          setDealer(normalizedDealer);
           setWalletAddress(mockWalletAddress);
           setIsConnected(true);
           
           // Store in localStorage for persistence
           localStorage.setItem('anvl_wallet_connected', 'true');
           localStorage.setItem('anvl_wallet_address', mockWalletAddress);
-          localStorage.setItem('anvl_dealer_data', JSON.stringify(response.data));
+          localStorage.setItem('anvl_dealer_data', JSON.stringify(normalizedDealer));
           
           return { success: true, address: mockWalletAddress };
         } else {
