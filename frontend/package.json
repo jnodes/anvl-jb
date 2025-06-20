@@ -1,7 +1,8 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "anvl-frontend",
+  "version": "1.0.0",
   "private": true,
+  "homepage": "https://anvl.finance",
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-accordion": "^1.2.8",
@@ -57,7 +58,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "analyze": "npm run build && npx bundle-analyzer build/static/js/*.js"
   },
   "browserslist": {
     "production": [

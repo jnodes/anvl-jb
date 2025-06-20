@@ -1,53 +1,122 @@
-import { useEffect } from "react";
+import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { Toaster } from "./components/ui/toaster";
+import WalletConnect from "./components/auth/WalletConnect";
+import Header from "./components/layout/Header";
+import Sidebar from "./components/layout/Sidebar";
+import DashboardOverview from "./components/dashboard/DashboardOverview";
+import VehicleInventory from "./components/vehicles/VehicleInventory";
+import LoanManagement from "./components/loans/LoanManagement";
+import NFCAudits from "./components/audits/NFCAudits";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+  const { isConnected } = useAuth();
+  return isConnected ? children : <Navigate to="/connect" replace />;
+};
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+// Default Redirect Component
+const DefaultRedirect = () => {
+  const { isConnected } = useAuth();
+  return isConnected ? <Navigate to="/dashboard" replace /> : <Navigate to="/connect" replace />;
+};
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
+// Layout Component with dark theme and better responsive handling
+const DashboardLayout = ({ children }) => {
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <div className="min-h-screen bg-gray-950 flex flex-col">
+      <Header />
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar />
+        <main className="flex-1 overflow-auto">
+          <div className="p-4 sm:p-6 lg:p-8">
+            {children}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <AuthProvider>
+      <div className="App bg-gray-950 min-h-screen">
+        <BrowserRouter>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/connect" element={<WalletConnect />} />
+            
+            {/* Protected Routes */}
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <DashboardOverview />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/vehicles" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <VehicleInventory />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/loans" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <LoanManagement />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/audits" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <NFCAudits />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/analytics" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <div className="flex items-center justify-center min-h-96">
+                    <div className="text-center">
+                      <h2 className="text-2xl font-bold text-white mb-4">Analytics Dashboard</h2>
+                      <p className="text-gray-400">Coming soon - Advanced analytics and reporting</p>
+                    </div>
+                  </div>
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/settings" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <div className="flex items-center justify-center min-h-96">
+                    <div className="text-center">
+                      <h2 className="text-2xl font-bold text-white mb-4">Settings</h2>
+                      <p className="text-gray-400">Coming soon - Account and system settings</p>
+                    </div>
+                  </div>
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            
+            {/* Default Route */}
+            <Route path="/" element={
+              <DefaultRedirect />
+            } />
+          </Routes>
+          <Toaster />
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 }
 

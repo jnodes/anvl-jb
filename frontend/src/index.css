@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent FOUC by setting dark background immediately */
+html {
+  background-color: #020617; /* gray-950 */
+}
+
 body {
     margin: 0;
+    background-color: #020617; /* gray-950 */
+    color: #f8fafc; /* gray-50 */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
@@ -11,12 +18,42 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  background-color: #020617; /* gray-950 */
+  min-height: 100vh;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
 
-
+/* Custom utility classes for responsive design */
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  /* Smooth scrolling for all scrollable elements */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better text wrapping */
+  .text-wrap-balance {
+    text-wrap: balance;
+  }
+}
 
 @layer base {
   :root {
@@ -74,8 +111,6 @@ code {
     }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -83,4 +118,14 @@ code {
   body {
     @apply bg-background text-foreground;
     }
+  
+  /* Ensure proper scrolling on mobile */
+  html {
+    @apply scroll-smooth;
+  }
+  
+  /* Prevent horizontal overflow on mobile */
+  body, #root {
+    @apply overflow-x-hidden;
+  }
 }
