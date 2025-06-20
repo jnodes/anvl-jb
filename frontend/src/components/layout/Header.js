@@ -21,10 +21,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gray-900 border-b border-gray-800 px-4 md:px-6 py-4">
+    <header className="bg-gray-900 border-b border-gray-800 px-4 md:px-6 py-3 md:py-4 relative z-30">
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-3 md:space-x-4">
+        <div className="flex items-center space-x-3 md:space-x-4 ml-12 md:ml-0">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">A</span>
@@ -32,7 +32,7 @@ const Header = () => {
             <span className="text-xl font-bold text-white">ANVL</span>
           </div>
           {dealer && (
-            <div className="hidden md:block text-sm text-gray-400">
+            <div className="hidden lg:block text-sm text-gray-400">
               {dealer.name}
             </div>
           )}
@@ -44,18 +44,19 @@ const Header = () => {
             <>
               {/* ANVL Tokens */}
               <div className="flex items-center space-x-2">
-                <Badge variant="secondary" className="bg-purple-900 text-purple-200 text-xs md:text-sm">
-                  {dealer?.anvl_tokens || 0} ANVL
+                <Badge variant="secondary" className="bg-purple-900 text-purple-200 text-xs">
+                  <span className="hidden sm:inline">{dealer?.anvl_tokens || 0} ANVL</span>
+                  <span className="sm:hidden">{dealer?.anvl_tokens || 0}</span>
                 </Badge>
               </div>
 
               {/* Notifications */}
-              <Button variant="ghost" size="sm" className="relative text-gray-400 hover:text-white hover:bg-gray-800">
-                <Bell className="h-5 w-5" />
+              <Button variant="ghost" size="sm" className="relative text-gray-400 hover:text-white hover:bg-gray-800 p-2">
+                <Bell className="h-4 w-4 md:h-5 md:w-5" />
                 {notifications > 0 && (
                   <Badge 
                     variant="destructive" 
-                    className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                    className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center p-0 text-xs"
                   >
                     {notifications}
                   </Badge>
@@ -65,7 +66,7 @@ const Header = () => {
               {/* Wallet Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="flex items-center space-x-2 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 text-xs md:text-sm">
+                  <Button variant="outline" className="flex items-center space-x-2 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 text-xs px-2 md:px-3">
                     <Wallet className="h-4 w-4" />
                     <span className="hidden sm:inline">
                       {formatAddress(dealer?.wallet_address)}
@@ -90,8 +91,8 @@ const Header = () => {
               </DropdownMenu>
             </>
           ) : (
-            <div className="text-sm text-gray-400">
-              Connect wallet to get started
+            <div className="text-xs md:text-sm text-gray-400">
+              Connect wallet
             </div>
           )}
         </div>
