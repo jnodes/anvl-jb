@@ -1,7 +1,11 @@
 import axios from 'axios';
+import { mockDealer, mockLoans, mockVehicles, mockNotifications, mockAuditLogs, mockTransactions } from '../mock/mockData';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API_BASE = `${BACKEND_URL}/api`;
+
+// Flag to determine if we should use mock data
+const USE_MOCK_DATA = true;
 
 // Create axios instance with default config
 const api = axios.create({
