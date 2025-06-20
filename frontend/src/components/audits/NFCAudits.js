@@ -296,7 +296,7 @@ const NFCAudits = () => {
           <CardDescription className="text-gray-400">Understanding the ANVL audit process</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
                 <Smartphone className="h-6 w-6 text-blue-400" />
@@ -315,7 +315,7 @@ const NFCAudits = () => {
                 GPS coordinates are automatically recorded to verify the vehicle's location
               </p>
             </div>
-            <div className="text-center">
+            <div className="text-center sm:col-span-2 lg:col-span-1">
               <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
                 <CheckCircle className="h-6 w-6 text-green-400" />
               </div>
