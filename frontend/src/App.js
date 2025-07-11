@@ -10,8 +10,6 @@ import DashboardOverview from "./components/dashboard/DashboardOverview";
 import VehicleInventory from "./components/vehicles/VehicleInventory";
 import LoanManagement from "./components/loans/LoanManagement";
 import NFCAudits from "./components/audits/NFCAudits";
-import Analytics from "./components/analytics/Analytics";
-import Settings from "./components/settings/Settings";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -76,44 +74,64 @@ function App() {
               </ProtectedRoute>
             } />
             
-            <Route path="/settings" element={
+            <Route path="/audits" element={
               <ProtectedRoute>
                 <DashboardLayout>
-                 <div className="flex items-center justify-center min-h-96">
-                  <div className="text-center">
-                    <h2 className="text-2xl font-bold text-white mb-4">Settings</h2>
-                      <p className="text-gray-400">Coming soon - Account and system settings</p>
-                     </div>
-                    </div>
-                  </DashboardLayout>
-               </ProtectedRoute>
-             } />
+                  <NFCAudits />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
             
             <Route path="/analytics" element={
               <ProtectedRoute>
                 <DashboardLayout>
-                 <div className="flex items-center justify-center min-h-96">
-                 <div className="text-center">
-                 <h2 className="text-2xl font-bold text-white mb-4">Analytics Dashboard</h2>
-                   <p className="text-gray-400">Coming soon - Advanced analytics and reporting</p>
+                  <div className="w-full max-w-7xl mx-auto space-y-6">
+                    <h1 className="text-2xl font-bold text-white">Analytics Dashboard</h1>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+                        <p className="text-sm text-gray-400">Total Loaned</p>
+                        <p className="text-xl font-bold text-white">$450,000</p>
+                      </div>
+                      <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+                        <p className="text-sm text-gray-400">Outstanding</p>
+                        <p className="text-xl font-bold text-white">$290,000</p>
+                      </div>
+                      <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+                        <p className="text-sm text-gray-400">Repayment Rate</p>
+                        <p className="text-xl font-bold text-white">65%</p>
+                      </div>
+                      <div className="bg-gray-900 border border-gray-800 rounded-lg p-4">
+                        <p className="text-sm text-gray-400">Compliance</p>
+                        <p className="text-xl font-bold text-white">95%</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-               </DashboardLayout>
+                </DashboardLayout>
               </ProtectedRoute>
-             } />
+            } />
             
             <Route path="/settings" element={
               <ProtectedRoute>
                 <DashboardLayout>
-                  <Settings />
+                  <div className="w-full max-w-7xl mx-auto space-y-6">
+                    <h1 className="text-2xl font-bold text-white">Settings</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+                        <h2 className="text-xl font-semibold text-white mb-4">Profile</h2>
+                        <p className="text-gray-400">Business information and wallet settings</p>
+                      </div>
+                      <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+                        <h2 className="text-xl font-semibold text-white mb-4">Notifications</h2>
+                        <p className="text-gray-400">Email and alert preferences</p>
+                      </div>
+                    </div>
+                  </div>
                 </DashboardLayout>
               </ProtectedRoute>
             } />
             
             {/* Default Route */}
-            <Route path="/" element={
-              <DefaultRedirect />
-            } />
+            <Route path="/" element={<DefaultRedirect />} />
           </Routes>
           <Toaster />
         </BrowserRouter>
