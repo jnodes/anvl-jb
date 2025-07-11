@@ -1,5 +1,3 @@
-import Analytics from "./components/analytics/Analytics";
-import Settings from "./components/settings/Settings";
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -78,21 +76,31 @@ function App() {
               </ProtectedRoute>
             } />
             
-            <Route path="/audits" element={
+            <Route path="/settings" element={
               <ProtectedRoute>
                 <DashboardLayout>
-                  <NFCAudits />
-                </DashboardLayout>
-              </ProtectedRoute>
-            } />
+                 <div className="flex items-center justify-center min-h-96">
+                  <div className="text-center">
+                    <h2 className="text-2xl font-bold text-white mb-4">Settings</h2>
+                      <p className="text-gray-400">Coming soon - Account and system settings</p>
+                     </div>
+                    </div>
+                  </DashboardLayout>
+               </ProtectedRoute>
+             } />
             
             <Route path="/analytics" element={
               <ProtectedRoute>
                 <DashboardLayout>
-                  <Analytics />
-                </DashboardLayout>
+                 <div className="flex items-center justify-center min-h-96">
+                 <div className="text-center">
+                 <h2 className="text-2xl font-bold text-white mb-4">Analytics Dashboard</h2>
+                   <p className="text-gray-400">Coming soon - Advanced analytics and reporting</p>
+                  </div>
+                </div>
+               </DashboardLayout>
               </ProtectedRoute>
-            } />
+             } />
             
             <Route path="/settings" element={
               <ProtectedRoute>
