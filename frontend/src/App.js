@@ -10,6 +10,8 @@ import DashboardOverview from "./components/dashboard/DashboardOverview";
 import VehicleInventory from "./components/vehicles/VehicleInventory";
 import LoanManagement from "./components/loans/LoanManagement";
 import NFCAudits from "./components/audits/NFCAudits";
+import Analytics from "./components/analytics/Analytics";
+import Settings from "./components/settings/Settings";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
