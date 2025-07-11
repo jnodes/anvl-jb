@@ -82,7 +82,7 @@ function App() {
               </ProtectedRoute>
             } />
             
-            <Route path="/analytics" element={
+           <Route path="/analytics" element={
   <ProtectedRoute>
     <DashboardLayout>
       <div className="w-full max-w-7xl mx-auto space-y-6">
