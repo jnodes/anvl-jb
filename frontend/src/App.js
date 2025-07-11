@@ -1,3 +1,5 @@
+import Analytics from "./components/analytics/Analytics";
+import Settings from "./components/settings/Settings";
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
