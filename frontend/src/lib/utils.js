@@ -71,3 +71,10 @@ export function getStatusColor(status) {
   };
   return colors[status] || 'bg-gray-100 text-gray-800';
 }
+export function formatPercentage(value) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'percent',
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(value / 100);
+}
