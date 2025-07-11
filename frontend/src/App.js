@@ -87,12 +87,7 @@ function App() {
             <Route path="/analytics" element={
               <ProtectedRoute>
                 <DashboardLayout>
-                  <div className="flex items-center justify-center min-h-96">
-                    <div className="text-center">
-                      <h2 className="text-2xl font-bold text-white mb-4">Analytics Dashboard</h2>
-                      <p className="text-gray-400">Coming soon - Advanced analytics and reporting</p>
-                    </div>
-                  </div>
+                  <Analytics />
                 </DashboardLayout>
               </ProtectedRoute>
             } />
@@ -100,12 +95,7 @@ function App() {
             <Route path="/settings" element={
               <ProtectedRoute>
                 <DashboardLayout>
-                  <div className="flex items-center justify-center min-h-96">
-                    <div className="text-center">
-                      <h2 className="text-2xl font-bold text-white mb-4">Settings</h2>
-                      <p className="text-gray-400">Coming soon - Account and system settings</p>
-                    </div>
-                  </div>
+                  <Settings />
                 </DashboardLayout>
               </ProtectedRoute>
             } />
