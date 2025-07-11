@@ -112,7 +112,7 @@ function App() {
                 <p className="text-xs text-emerald-400 mt-1">+12% from last month</p>
               </div>
               <div className="bg-emerald-500/10 text-emerald-400 p-2 rounded-lg">
-                💰
+                <span className="text-lg">💰</span>
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@ function App() {
                 <p className="text-xs text-yellow-400 mt-1">-5% from last month</p>
               </div>
               <div className="bg-yellow-500/10 text-yellow-400 p-2 rounded-lg">
-                ⏱️
+                <span className="text-lg">⏱️</span>
               </div>
             </div>
           </div>
@@ -136,7 +136,7 @@ function App() {
                 <p className="text-xs text-emerald-400 mt-1">+8% from last month</p>
               </div>
               <div className="bg-blue-500/10 text-blue-400 p-2 rounded-lg">
-                📈
+                <span className="text-lg">📈</span>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ function App() {
                 <p className="text-xs text-emerald-400 mt-1">+2% from last month</p>
               </div>
               <div className="bg-purple-500/10 text-purple-400 p-2 rounded-lg">
-                ✅
+                <span className="text-lg">✅</span>
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@ function App() {
                 </div>
                 <div className="pt-3">
                   <div className="w-full bg-gray-800 rounded-full h-2">
-                    <div className="bg-blue-500 h-2 rounded-full" style={{width: '65%'}}></div>
+                    <div className="bg-blue-500 h-2 rounded-full w-2/3"></div>
                   </div>
                   <p className="text-xs text-gray-400 mt-1">Monthly goal progress: 65%</p>
                 </div>
