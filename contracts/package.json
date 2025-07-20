@@ -1,0 +1,16 @@
+{
+  "name": "anvl-contracts",
+  "version": "1.0.0",
+  "description": "ANVL Smart Contracts",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@openzeppelin/contracts": "^4.9.3",
+    "@chainlink/contracts": "^0.8.0",
+    "hardhat": "^2.19.0"
+  }
+}
