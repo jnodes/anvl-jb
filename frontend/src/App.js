@@ -78,6 +78,14 @@ function App() {
               </ProtectedRoute>
             } />
             
+            <Route path="/presale" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <ANVLPresale />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            
             <Route path="/analytics" element={
               <ProtectedRoute>
                 <DashboardLayout>
