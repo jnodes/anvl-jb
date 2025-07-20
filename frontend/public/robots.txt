@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Block access to admin or sensitive areas
+Disallow: /admin/
+Disallow: /api/
+
+# Allow search engines to access main pages
+Allow: /dashboard
+Allow: /vehicles
+Allow: /loans
+Allow: /audits
+
+# Sitemap location
+Sitemap: https://anvl.finance/sitemap.xml
