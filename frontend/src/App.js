@@ -10,6 +10,7 @@ import DashboardOverview from "./components/dashboard/DashboardOverview";
 import VehicleInventory from "./components/vehicles/VehicleInventory";
 import LoanManagement from "./components/loans/LoanManagement";
 import NFCAudits from "./components/audits/NFCAudits";
+import ANVLPresale from "./components/presale/ANVLPresale";
 
 const ProtectedRoute = ({ children }) => {
   const { isConnected } = useAuth();

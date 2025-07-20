@@ -11,11 +11,13 @@ import {
   BarChart3, 
   Settings,
   Menu,
-  X
+  X,
+  Coins
 } from 'lucide-react';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { name: 'Presale', href: '/presale', icon: Coins },
   { name: 'Vehicles', href: '/vehicles', icon: Car },
   { name: 'Loans', href: '/loans', icon: DollarSign },
   { name: 'NFC Audits', href: '/audits', icon: Smartphone },
